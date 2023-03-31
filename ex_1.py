@@ -7,9 +7,7 @@ def check_palidrom(sample):
     False/True
     """
     sample=sample.lower().replace(" ","")
-    if sample!=sample[::-1]:
-        return False
-    return True;
+    return  sample==sample[::-1];
 words=['Anna','sedes','123456123456','koza','zaraz','kajak','kuweta i żwirek','owocowo','A to kanapa pana Kota']
 print("Słowa do sprawdzenia:",*words,sep="\n")
 palidrom=[word for word in words if check_palidrom(word)]
