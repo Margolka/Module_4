@@ -1,20 +1,33 @@
-choice = input(
-    "Podaj działanie, posługując się odpowiednią liczbą: 1 Dodawanie, 2 Odejmowanie, 3 Mnożenie, 4 Dzielenie:"
-)
-if choice in ("1", "2", "3", "4"):
-    a = float(input("Podaj składnik 1 :"))
-    b = float(input("Podaj składnik 2 :"))
+import logging
 
-    if choice == "1":
-        print(a + b)
-    elif choice == "2":
-        print(a - b)
-    elif choice == "3":
-        print(a * b)
-    elif choice == "4":
-        if b != 0:
-            print(a / b)
-        else:
-            print("nie można dzielić przez 0")
-else:
-    print("błędny wybór")
+logging.basicConfig(level=logging.DEBUG, format="%(message)s")
+
+
+while True:
+    choice = input(
+        "Podaj działanie, posługując się odpowiednią liczbą: \n1 Dodawanie, \n2 Odejmowanie, \n3 Mnożenie, \n4 Dzielenie:\n"
+    )
+    if choice in ("1", "2", "3", "4"):
+        try:
+            a = float(input("Podaj składnik 1 :"))
+            b = float(input("Podaj składnik 2 :"))
+        except ValueError:
+            logging.error("Błędne dane")
+            break
+        if choice == "1":
+            logging.info("Dodaję %s i %s" % (a, b))
+            print("Wynik to", a + b)
+        elif choice == "2":
+            logging.info("Odejmuję %s i %s" % (b, a))
+            print("Wynik to", a - b)
+        elif choice == "3":
+            logging.info("Mnożę %s i %s" % (a, b))
+            print("Wynik to", a * b)
+        elif choice == "4":
+            if b != 0:
+                logging.info("Dzielę %s przez %s" % (a, b))
+                print("Wynik to", a / b)
+            else:
+                logging.error("nie można dzielić przez 0")
+    else:
+        logging.error("Błędny wybór")
