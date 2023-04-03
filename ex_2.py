@@ -1,3 +1,4 @@
+# "Simple calculator operating on two numbers provided by the user"
 import logging
 
 logging.basicConfig(level=logging.DEBUG, format="%(message)s")
@@ -11,7 +12,7 @@ if choice in ("1", "2", "3", "4"):
         b = float(input("Podaj składnik 2 :"))
     except ValueError:
         logging.error("Błędne dane")
-
+        exit(0)
     if choice == "1":
         logging.info("Dodaję %s i %s" % (a, b))
         print("Wynik to", a + b)
